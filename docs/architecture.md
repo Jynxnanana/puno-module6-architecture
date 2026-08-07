@@ -31,3 +31,28 @@ The data layer will use MongoDB Atlas Free. It will store, retrieve, update, and
 | Application server | Node.js and Express | Processes order requests and applies business rules |
 | Database | MongoDB Atlas Free | Stores and manages menu and order records |
 | Repository | GitHub | Stores documentation and tracks changes |
+
+## 5. System Architecture Diagram
+
+```mermaid
+flowchart TD
+    U[Customer] --> F[Vue.js Frontend]
+    F -->|HTTP Request: Place Order| B[Node.js and Express Backend]
+    B -->|Database Operation| D[(MongoDB Atlas Free)]
+    D -->|Query Result| B
+    B -->|JSON Response| F
+    F -->|Display Order Status| U
+```
+
+## 6. Data Flow
+
+### Example Process: Place a New Order
+1. The customer selects menu items through the Vue.js interface.
+2. Vue.js checks that required fields (item, quantity, delivery info) are filled in.
+3. The frontend sends an HTTP request to the Express backend.
+4. The backend validates the order and processes the request.
+5. The backend sends a database operation to MongoDB.
+6. MongoDB stores the new order record.
+7. MongoDB returns the result to the backend.
+8. The backend sends a JSON response to the frontend.
+9. The frontend displays an order confirmation to the customer.
