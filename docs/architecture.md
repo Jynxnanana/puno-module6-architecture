@@ -56,3 +56,33 @@ flowchart TD
 7. MongoDB returns the result to the backend.
 8. The backend sends a JSON response to the frontend.
 9. The frontend displays an order confirmation to the customer.
+
+## 7. Database Plan
+
+### Proposed Database Name
+```text
+food_ordering_db
+```
+
+### Primary Collection
+```text
+orders
+```
+
+### Proposed Fields
+
+| Field | Type | Description |
+|---|---|---|
+| _id | ObjectId | Unique record identifier |
+| customerName | String | Name of the customer placing the order |
+| items | Array | List of ordered menu items and quantities |
+| totalAmount | Number | Total price of the order |
+| status | String | Current order status (e.g. pending, preparing, completed, cancelled) |
+| createdAt | Date | Date the order was created |
+| updatedAt | Date | Date the order was last updated |
+
+## 8. Design Justification
+The three-tier architecture is appropriate for the Food Ordering System because it separates the menu-browsing interface, order-processing logic, and order data storage into independent layers. This separation improves maintainability by allowing each layer to be updated independently, improves security by keeping database access behind the application layer, simplifies testing since each layer can be tested in isolation, and supports future development such as adding payment processing or delivery tracking without redesigning the entire system.
+
+## 9. Architectural Limitations
+The current activity focuses only on the proposed architecture. Frontend code, backend code, database connection, user authentication, and deployment have not yet been implemented. These components will be developed in Module 7.
